@@ -1,9 +1,9 @@
-package com.example.pcm.service;
+package com.example.PMC.service;
 
 import java.util.List;
 
-import com.example.pcm.model.User;
-import com.example.pcm.repository.UserRepository;
+import com.example.PMC.model.User;
+import com.example.PMC.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

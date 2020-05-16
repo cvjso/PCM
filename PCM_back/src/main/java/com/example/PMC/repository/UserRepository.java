@@ -1,4 +1,4 @@
-package com.example.pcm.repository;
+package com.example.PMC.repository;
 
 import com.example.pcm.model.User;
 

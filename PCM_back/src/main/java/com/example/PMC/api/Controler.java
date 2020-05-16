@@ -1,17 +1,19 @@
-package com.example.pcm.controller;
-
-import java.util.List;
-
-import com.example.pcm.model.User;
-import com.example.pcm.service.UserService;
+package com.example.PMC.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
+import com.example.PMC.model.User;
+import com.example.PMC.service.UserService;
+
 @RestController
-public class UserController {
+public class Controler {
 
     @Autowired
     private UserService userService;
