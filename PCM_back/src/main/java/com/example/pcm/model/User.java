@@ -1,30 +1,32 @@
 package com.example.pcm.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "PCM")
 public class User {
 
-    @Field(value = "id")
-    private String id;
+    @Id
+    @Field(value = "email")
+    private String email;
 
     @Field(value = "senha")
     private String senha;
 
-    public User(String id,String senha){
-        this.id = id;
+    public User(String email,String senha){
+        this.email = email;
         this.senha = senha;
     }
     
 
-    public void setid(String id){
-        this.id = id;
+    public void setemail(String email){
+        this.email= email;
     }
 
 
-    public String getid(){
-        return id;
+    public String getemail(){
+        return email;
     }
 
     public void setSenha(String senha){
@@ -37,7 +39,7 @@ public class User {
     }
 
     public String toString(){
-        return "User email: " + id + " senha :" + senha;
+        return "User email: " + email + " senha :" + senha;
     }
 
 }

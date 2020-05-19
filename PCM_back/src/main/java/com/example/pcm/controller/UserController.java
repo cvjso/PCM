@@ -31,8 +31,8 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public Optional<User> getEmail(@RequestBody String email) {
-        return userService.getByEmail(email);
+    public Optional<User> getId(@RequestBody String id) {
+        return userService.getById(id);
     }
 
     @GetMapping("/getAll")
