@@ -8,6 +8,7 @@ import com.example.pcm.model.User;
 import com.example.pcm.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,4 +42,8 @@ public class UserController {
         return userService.getAll();
     }
 
+    @DeleteMapping("/delete")
+    public void deletedUser(@RequestBody Request request){
+        userService.deleteUser(request.getEmail());
+    }
 }
