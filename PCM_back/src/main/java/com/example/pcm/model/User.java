@@ -1,11 +1,13 @@
 package com.example.pcm.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "PCM")
 public class User {
 
+    @Id
     @Field(value = "email")
     private String email;
 
@@ -19,7 +21,7 @@ public class User {
     
 
     public void setemail(String email){
-        this.email = email;
+        this.email= email;
     }
 
 

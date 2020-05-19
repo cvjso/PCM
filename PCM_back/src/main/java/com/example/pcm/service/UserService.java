@@ -19,8 +19,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public Optional<User> getByEmail(String email){
-        return userRepository.findById(email);
+    public Optional<User> getById(String id){
+        return userRepository.findById(id);
     }
 
     public List<User> getAll(){
