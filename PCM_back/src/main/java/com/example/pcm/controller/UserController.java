@@ -3,6 +3,7 @@ package com.example.pcm.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.pcm.model.Request;
 import com.example.pcm.model.User;
 import com.example.pcm.service.UserService;
 
@@ -25,14 +26,14 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String create(@RequestBody User user) {
-        User u = userService.create(user);
+    public String create(@RequestBody Request request) {
+        User u = userService.create(request);
         return u.toString();
     }
 
     @GetMapping("/get")
-    public Optional<User> getId(@RequestBody String id) {
-        return userService.getById(id);
+    public Optional<User> getId(@RequestBody Request request) {
+        return userService.getById(request.getEmail());
     }
 
     @GetMapping("/getAll")
