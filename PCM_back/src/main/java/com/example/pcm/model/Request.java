@@ -13,6 +13,13 @@ public class Request {
     @Field(value = "senha")
     private String senha;
 
+    @Field(value = "operation")
+    private String operation;
+
+    public String getOperation() {
+        return this.operation;
+    }
+
     public String getEmail(){
         return this.email;
     }

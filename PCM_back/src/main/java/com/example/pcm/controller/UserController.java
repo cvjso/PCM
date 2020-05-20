@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.pcm.model.Request;
+import com.example.pcm.model.Response;
 import com.example.pcm.model.User;
 import com.example.pcm.service.UserService;
 
@@ -26,10 +27,35 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/create")
-    public String create(@RequestBody Request request) {
-        User u = userService.create(request);
-        return u.toString();
+    @PostMapping("/user")
+    public Response controller(@RequestBody Request request) {
+        String param = request.getOperation();
+        Response response = new Response();
+
+
+        if(param.equals("create")){
+            User u = userService.create(request);
+            response.setMsg(u.toString());
+        }
+
+        else if(param.equals("get")){
+            response.setOptional_user(userService.getById(request.getEmail()));
+        }
+
+        else if(param.equals("getAll")){
+            response.setUsers(userService.getAll());
+        }
+
+        else if(param.equals("delete")){
+            userService.deleteUser(request.getEmail());
+            response.setMsg("User deleted");
+        }
+
+        else{
+            response.setMsg("Nenhum 'operation' para ser feito");
+        }
+
+        return response;
     }
 
     @GetMapping("/get")
