@@ -3,6 +3,8 @@ package com.example.pcm.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.constraints.Email;
+
 import com.example.pcm.model.Request;
 import com.example.pcm.model.User;
 import com.example.pcm.repository.UserRepository;
@@ -31,6 +33,12 @@ public class UserService {
 
     public void deleteUser(String id){
         userRepository.deleteById(id);
+    }
+    
+    public void updateUser(String email,String senha){
+        User r = userRepository.findByEmail(email);
+        r.setSenha(senha);
+        userRepository.save(r);
     }
 
 }
