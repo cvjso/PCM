@@ -35,8 +35,8 @@ public class UserController {
 
 
         if(param.equals("create")){
-            User u = userService.create(request);
-            response.setMsg(u.toString());
+            userService.create(request);
+            response.setMsg("User created");
         }
 
         else if(param.equals("get")){
@@ -50,6 +50,11 @@ public class UserController {
         else if(param.equals("delete")){
             userService.deleteUser(request.getEmail());
             response.setMsg("User deleted");
+        }
+
+        else if(param.equals("update")){
+            userService.updateUser(request.getEmail(),request.getSenha());
+            response.setMsg("User updated");
         }
 
         else{

@@ -16,6 +16,17 @@ public class Request {
     @Field(value = "operation")
     private String operation;
 
+    @Field(value = "name_machine")
+    private String name_machine;
+
+    public String getName_machine(){
+        return this.name_machine;
+    }
+
+    public void setName_machine(String name){
+        this.name_machine = name;
+    }
+
     public String getOperation() {
         return this.operation;
     }
