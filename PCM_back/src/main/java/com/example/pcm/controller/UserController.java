@@ -64,6 +64,16 @@ public class UserController {
         return response;
     }
 
+    @PostMapping("/machine")
+    public Response controller_machine(@RequestBody Request request){
+        String param = request.getOperation();
+        Response response = new Response();
+
+        // Necessário implementar tudo que está no /user para o /machine adaptando
+
+        return response;
+    }
+
     @GetMapping("/get")
     public Optional<User> getId(@RequestBody Request request) {
         return userService.getById(request.getEmail());
