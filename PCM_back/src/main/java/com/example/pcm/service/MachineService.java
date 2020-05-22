@@ -38,7 +38,7 @@ public class MachineService {
     }
     
     public void updateMachine(String nome,Paradas parada){
-        Machine r = machineRepository.findByName(nome);
+        Machine r = machineRepository.findByNome(nome);
         ArrayList<Paradas> paradas = r.getParadas();
         paradas.add(parada);
         r.setParadas(paradas);

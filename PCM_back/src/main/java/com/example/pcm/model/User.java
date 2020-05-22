@@ -1,12 +1,11 @@
 package com.example.pcm.model;
 
-import java.util.Optional;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "PCM")
+@Document(collection = "Users")
 public class User {
 
     @Id
