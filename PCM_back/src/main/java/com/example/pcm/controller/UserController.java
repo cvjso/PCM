@@ -9,6 +9,7 @@ import com.example.pcm.model.User;
 import com.example.pcm.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,31 +29,32 @@ public class UserController {
         this.userService = userService;
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/user")
     public Response controller(@RequestBody Request request) {
         String param = request.getOperation();
         Response response = new Response();
 
 
-        if(param.equals("create")){
+        if(param.equals("add_user")){
             userService.create(request);
             response.setMsg("User created");
         }
 
-        else if(param.equals("get")){
+        else if(param.equals("get_user")){
             response.setOptional_user(userService.getById(request.getEmail()));
         }
 
-        else if(param.equals("getAll")){
+        else if(param.equals("getAll_user")){
             response.setUsers(userService.getAll());
         }
 
-        else if(param.equals("delete")){
+        else if(param.equals("delete_user")){
             userService.deleteUser(request.getEmail());
             response.setMsg("User deleted");
         }
 
-        else if(param.equals("update")){
+        else if(param.equals("update_user")){
             userService.updateUser(request.getEmail(),request.getSenha());
             response.setMsg("User updated");
         }
