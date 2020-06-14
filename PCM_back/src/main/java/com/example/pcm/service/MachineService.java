@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.pcm.model.Machine;
-import com.example.pcm.model.Paradas;
-import com.example.pcm.model.Request;
+import com.example.pcm.model.Parada;
+import com.example.pcm.model.Request_machine;
+import com.example.pcm.model.Request_user;
 import com.example.pcm.repository.MachineRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class MachineService {
     @Autowired
     private MachineRepository machineRepository;
 
-    public Machine create(Request request){
-        ArrayList<Paradas> paradas_iniciais = new ArrayList<>();
+    public Machine create(Request_machine request){
+        ArrayList<Parada> paradas_iniciais = new ArrayList<>();
         Machine machine = new Machine(request.getName_machine() ,paradas_iniciais);
         return machineRepository.save(machine);
     }
@@ -37,9 +38,9 @@ public class MachineService {
         machineRepository.deleteById(id);
     }
     
-    public void updateMachine(String nome,Paradas parada){
-        Machine r = machineRepository.findByNome(nome);
-        ArrayList<Paradas> paradas = r.getParadas();
+    public void updateMachine(String nome,Parada parada){
+        Machine r = machineRepository.findByNameMachine(nome);
+        ArrayList<Parada> paradas = r.getParadas();
         paradas.add(parada);
         r.setParadas(paradas);
         machineRepository.save(r);

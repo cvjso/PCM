@@ -5,19 +5,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "PCM")
-public class Request {
+public class Request_machine {
     @Id
-    @Field(value = "email")
-    private String email;
-
-    @Field(value = "senha")
-    private String senha;
+    @Field(value = "name_machine")
+    private String name_machine;
 
     @Field(value = "operation")
     private String operation;
 
-    @Field(value = "name_machine")
-    private String name_machine;
+    @Field(value = "parada")
+    private Parada parada;
 
     public String getName_machine(){
         return this.name_machine;
@@ -31,20 +28,15 @@ public class Request {
         return this.operation;
     }
 
-    public String getEmail(){
-        return this.email;
+    public void setOperation(String operation){
+        this.operation = operation;
     }
 
-    public String getSenha(){
-        return this.senha;
+    public void setParada(Parada parada) {
+        this.parada = parada;
     }
 
-    public void setEmail(String email){
-        this.email = email;
+    public Parada getParada() {
+        return this.parada;
     }
-
-    public void setSenha(String senha){
-        this.senha = senha;
-    }
-
 }

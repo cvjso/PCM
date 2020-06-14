@@ -10,30 +10,30 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Machine {
 
     @Id
-    @Field(value = "nome")
-    private String nome;
+    @Field(value = "name_machine")
+    private String NameMachine;
 
-    @Field(value = "paradas")
-    private ArrayList<Paradas> paradas;
+    @Field(value = "parada")
+    private ArrayList<Parada> paradas;
 
-    public Machine(String name_machine, ArrayList<Paradas> paradas_iniciais) {
-        this.nome = name_machine;
+    public Machine(String name_machine, ArrayList<Parada> paradas_iniciais) {
+        this.NameMachine = name_machine;
         this.paradas = paradas_iniciais;
 	}
 
-	public String getNome() {
-        return nome;
+	public String getNameMachine() {
+        return NameMachine;
     }
 
-    public ArrayList<Paradas> getParadas() {
+    public ArrayList<Parada> getParadas() {
         return paradas;
     }
 
-    public void setParadas(ArrayList<Paradas> paradas) {
+    public void setParadas(ArrayList<Parada> paradas) {
         this.paradas = paradas;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNameMachine(String NameMachine) {
+        this.NameMachine = NameMachine;
     }
 }

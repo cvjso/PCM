@@ -3,7 +3,7 @@ package com.example.pcm.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.pcm.model.Request;
+import com.example.pcm.model.Request_user;
 import com.example.pcm.model.User;
 import com.example.pcm.repository.UserRepository;
 
@@ -16,7 +16,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User create(Request request){
+    public User create(Request_user request){
         User user = new User(request.getEmail(), request.getSenha());
         return userRepository.save(user);
     }

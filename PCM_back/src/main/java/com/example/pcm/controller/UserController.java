@@ -1,9 +1,10 @@
 package com.example.pcm.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.pcm.model.Request;
+import com.example.pcm.model.Request_user;
 import com.example.pcm.model.Response;
 import com.example.pcm.model.User;
 import com.example.pcm.service.UserService;
@@ -31,36 +32,46 @@ public class UserController {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/user")
-    public Response controller(@RequestBody Request request) {
+    public Response controller(@RequestBody Request_user request) {
         String param = request.getOperation();
         Response response = new Response();
+        switch(param) {
 
+            case "add_user":
+                userService.create(request);
+                response.setMsg("User created");
+            
+            case "get_user":
+                Optional<User> requested_user =  userService.getById(request.getEmail());
+                if(requested_user.isPresent()) {
+                    User desired_user = requested_user.get(); 
+                    if(request.getSenha().compareTo(desired_user.getSenha()) == 0 ){
+                        ArrayList<User> users = new ArrayList<User>();
+                        users.add(desired_user);
+                        response.setUsers(users);
+                    }
+                    else{
+                        response.setMsg("Credenciais inválidas");
+                    }
+                }
+                else{
+                    response.setMsg("Credenciais inválidas");
+                }
 
-        if(param.equals("add_user")){
-            userService.create(request);
-            response.setMsg("User created");
-        }
+            case "getAll_user":
+                response.setUsers(userService.getAll());
+            
+            case "delete_user":
+                userService.deleteUser(request.getEmail());
+                response.setMsg("User deleted");
 
-        else if(param.equals("get_user")){
-            response.setOptional_user(userService.getById(request.getEmail()));
-        }
+            case "update_user":
+                userService.updateUser(request.getEmail(),request.getSenha());
+                response.setMsg("User updated");
 
-        else if(param.equals("getAll_user")){
-            response.setUsers(userService.getAll());
-        }
-
-        else if(param.equals("delete_user")){
-            userService.deleteUser(request.getEmail());
-            response.setMsg("User deleted");
-        }
-
-        else if(param.equals("update_user")){
-            userService.updateUser(request.getEmail(),request.getSenha());
-            response.setMsg("User updated");
-        }
-
-        else{
-            response.setMsg("Nenhum 'operation' para ser feito");
+            default:
+                response.setMsg("Nenhum 'operation' para ser feito");
+            
         }
 
         return response;
@@ -68,7 +79,7 @@ public class UserController {
 
 
     @GetMapping("/get")
-    public Optional<User> getId(@RequestBody Request request) {
+    public Optional<User> getId(@RequestBody Request_user request) {
         return userService.getById(request.getEmail());
     }
 
@@ -78,12 +89,12 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public void deletedUser(@RequestBody Request request){
+    public void deletedUser(@RequestBody Request_user request){
         userService.deleteUser(request.getEmail());
     }
 
     @PutMapping("/update")
-    public void updatedUser(@RequestBody Request request){
+    public void updatedUser(@RequestBody Request_user request){
         userService.updateUser(request.getEmail(),request.getSenha());
     }
 }

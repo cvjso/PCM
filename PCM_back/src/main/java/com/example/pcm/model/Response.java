@@ -8,15 +8,10 @@ public class Response {
     private ArrayList<User> users = new ArrayList<User>();
     private ArrayList<Machine> machines = new ArrayList<Machine>();
     private String msg;
-    private Optional<User> optional_user;
     private Optional<Machine> optional_machine;
 
     public ArrayList<User> getUsers() {
         return users;
-    }
-
-    public Optional<User> getOptional_user() {
-        return optional_user;
     }
 
     public ArrayList<Machine> getMachines(){
@@ -25,10 +20,6 @@ public class Response {
 
     public Optional<Machine> getOptional_machine(){
         return optional_machine;
-    }
-
-    public void setOptional_user(Optional<User> optional_user) {
-        this.optional_user = optional_user;
     }
 
     public void setOptional_machine(Optional<Machine> optional_machine){
