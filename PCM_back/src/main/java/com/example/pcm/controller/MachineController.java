@@ -31,7 +31,31 @@ public class MachineController {
         if(param.equals("create")){
             machineService.create(request);
         }
-        // Necessário implementar tudo que está no /user para o /machine adaptando
+
+        else if(param.equals("get")){
+            response.setOptional_machine(machineService.getById(request.getName_machine()));
+        }
+
+        else if(param.equals("getAll")){
+            response.setMachines(machineService.getAll());
+        }
+
+        else if(param.equals("delete")){
+            machineService.deleteMachine(request.getName_machine());
+            response.setMsg("Machine deleted");
+        }
+
+        //consertar esse erro aki
+        //request eh uma string e em reques.getSenha tem q receber um Paradas
+        else if(param.equals("update")){
+            machineService.updateMachine(request.getName_machine(),request.getSenha());
+            response.setMsg("Machine updated");
+        }
+
+        else{
+            response.setMsg("Nenhum 'operation' para ser feito");
+        }
+
 
         return response;
     }
