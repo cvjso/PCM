@@ -1,6 +1,7 @@
 package com.example.pcm.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.example.pcm.model.Machine;
@@ -40,7 +41,11 @@ public class MachineController {
         }
 
         else if(param.equals("get")){
-            response.setOptional_machine(machineService.getById(request.getName_machine()));
+            String nameMachine = request.getName_machine();
+            Machine desiredMachine = machineService.getById(nameMachine);
+            ArrayList<Machine> machines = new ArrayList<Machine>();
+            machines.add(desiredMachine);
+            response.setMachines(machines);
         }
 
         else if(param.equals("getAll")){
@@ -53,7 +58,7 @@ public class MachineController {
         }
 
         else if(param.equals("update")){
-            Optional <Machine> desired_machine = machineService.getById(request.getName_machine());
+            Machine desired_machine = machineService.getById(request.getName_machine());
             if(desired_machine != null){
                 machineService.updateMachine(request.getName_machine(), request.getParada());
                 response.setMsg("Maquina atualizada");

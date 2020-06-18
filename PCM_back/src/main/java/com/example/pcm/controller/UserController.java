@@ -37,11 +37,17 @@ public class UserController {
         Response response = new Response();
         switch(param) {
 
-            case "add_user":
-                userService.create(request);
-                response.setMsg("User created");
+            case "create":
+                User user_created = userService.create(request);
+                if(user_created != null){
+                    response.setMsg("Usuário criado");
+                }
+                else{
+                    response.setMsg("Usuário não criado");
+                }
+                break;
             
-            case "get_user":
+            case "get":
                 Optional<User> requested_user =  userService.getById(request.getEmail());
                 if(requested_user.isPresent()) {
                     User desired_user = requested_user.get(); 
@@ -57,20 +63,25 @@ public class UserController {
                 else{
                     response.setMsg("Credenciais inválidas");
                 }
+                break;
 
-            case "getAll_user":
+            case "getAll":
                 response.setUsers(userService.getAll());
+                break;
             
-            case "delete_user":
+            case "delete":
                 userService.deleteUser(request.getEmail());
-                response.setMsg("User deleted");
+                response.setMsg("Usuário deletado");
+                break;
 
-            case "update_user":
+            case "update":
                 userService.updateUser(request.getEmail(),request.getSenha());
-                response.setMsg("User updated");
+                response.setMsg("Usuário atualizado");
+                break;
 
             default:
                 response.setMsg("Nenhum 'operation' para ser feito");
+                break;
             
         }
 

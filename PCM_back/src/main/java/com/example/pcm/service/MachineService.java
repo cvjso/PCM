@@ -26,8 +26,8 @@ public class MachineService {
         return machineRepository.save(machine);
     }
 
-    public Optional<Machine> getById(String id) {
-        return machineRepository.findById(id);
+    public Machine getById(String id) {
+        return machineRepository.findBynameMachine(id);
     }
 
     public List<Machine> getAll(){
@@ -39,7 +39,7 @@ public class MachineService {
     }
     
     public void updateMachine(String nome,Parada parada){
-        Machine r = machineRepository.findByNameMachine(nome);
+        Machine r = machineRepository.findBynameMachine(nome);
         ArrayList<Parada> paradas = r.getParadas();
         paradas.add(parada);
         r.setParadas(paradas);

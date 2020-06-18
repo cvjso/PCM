@@ -1,13 +1,12 @@
 package com.example.pcm.model;
 
-import javax.xml.crypto.Data;
 
 public class Parada {
-    private Data horario;
+    private String horario;
     private String motivo;
     private String tipo_parada;
 
-    public Data getHorario() {
+    public String getHorario() {
         return horario;
     }
 
@@ -27,7 +26,7 @@ public class Parada {
         this.motivo = motivo;
     }
 
-    public void setHorario(Data horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 }

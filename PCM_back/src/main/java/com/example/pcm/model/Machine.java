@@ -10,19 +10,19 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Machine {
 
     @Id
-    @Field(value = "name_machine")
-    private String NameMachine;
+    @Field(value = "nameMachine")
+    private String nameMachine;
 
     @Field(value = "parada")
     private ArrayList<Parada> paradas;
 
-    public Machine(String name_machine, ArrayList<Parada> paradas_iniciais) {
-        this.NameMachine = name_machine;
-        this.paradas = paradas_iniciais;
+    public Machine(String nameMachine, ArrayList<Parada> paradas) {
+        this.nameMachine = nameMachine;
+        this.paradas = paradas;
 	}
 
-	public String getNameMachine() {
-        return NameMachine;
+	public String getnameMachine() {
+        return nameMachine;
     }
 
     public ArrayList<Parada> getParadas() {
@@ -33,7 +33,7 @@ public class Machine {
         this.paradas = paradas;
     }
 
-    public void setNameMachine(String NameMachine) {
-        this.NameMachine = NameMachine;
+    public void setnameMachine(String nameMachine) {
+        this.nameMachine = nameMachine;
     }
 }
