@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("PCM")
 public class UserController {
@@ -30,7 +32,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/user")
     public Response controller(@RequestBody Request_user request) {
         String param = request.getOperation();

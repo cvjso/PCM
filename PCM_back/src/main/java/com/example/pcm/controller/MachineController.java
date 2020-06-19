@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("PCM")
 public class MachineController {
@@ -29,7 +31,6 @@ public class MachineController {
         this.machineService = machineService;
     }
 
-    @CrossOrigin(origins = "*")
     @PostMapping("/machine")
     public Response controller_machine(@RequestBody Request_machine request){
         String param = request.getOperation();
