@@ -22,7 +22,7 @@ public class MachineService {
 
     public Machine create(Request_machine request){
         ArrayList<Parada> paradas_iniciais = new ArrayList<>();
-        Machine machine = new Machine(request.getName_machine() ,paradas_iniciais);
+        Machine machine = new Machine(request.getName_machine() ,paradas_iniciais, "Produzindo");
         return machineRepository.save(machine);
     }
 
@@ -38,11 +38,12 @@ public class MachineService {
         machineRepository.deleteById(id);
     }
     
-    public void updateMachine(String nome,Parada parada){
+    public void updateMachine(String nome,Parada parada, String estado){
         Machine r = machineRepository.findBynameMachine(nome);
         ArrayList<Parada> paradas = r.getParadas();
         paradas.add(parada);
         r.setParadas(paradas);
+        r.setEstado(estado);
         machineRepository.save(r);
     }
 }

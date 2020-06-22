@@ -16,10 +16,22 @@ public class Machine {
     @Field(value = "parada")
     private ArrayList<Parada> paradas;
 
-    public Machine(String nameMachine, ArrayList<Parada> paradas) {
+    @Field(value = "estado")
+    private String estado;
+
+    public Machine(String nameMachine, ArrayList<Parada> paradas, String estado) {
         this.nameMachine = nameMachine;
         this.paradas = paradas;
-	}
+        this.estado = estado;
+    }
+    
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
 	public String getnameMachine() {
         return nameMachine;

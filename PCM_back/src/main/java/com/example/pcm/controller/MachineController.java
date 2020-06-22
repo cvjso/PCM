@@ -61,7 +61,7 @@ public class MachineController {
         else if(param.equals("update")){
             Machine desired_machine = machineService.getById(request.getName_machine());
             if(desired_machine != null){
-                machineService.updateMachine(request.getName_machine(), request.getParada());
+                machineService.updateMachine(request.getName_machine(), request.getParada(), request.getEstado());
                 response.setMsg("Maquina atualizada");
             }
             else{

@@ -16,6 +16,17 @@ public class Request_machine {
     @Field(value = "parada")
     private Parada parada;
 
+    @Field(value = "estado")
+    private String estado;
+
+    public String getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public String getName_machine(){
         return this.name_machine;
     }
